@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruby Cycles — Luxury Scroll Animation & Showroom</title>
+  
+  <!-- LUXURY EDITORIAL & ARCHITECTURAL TYPOGRAPHY -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Syncopate:wght@700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- MINIMAL PRELOADER -->
+  <div id="preloader" class="preloader">
+    <div class="loader-box">
+      <div class="spinner"></div>
+      <span id="load-text">Loading 0%</span>
+    </div>
+  </div>
+
+  <!-- FIXED LUXURY NAVBAR -->
+  <header class="luxury-navbar" id="luxury-navbar">
+    
+    <!-- BRAND HERITAGE LOCKUP (TOP-LEFT) -->
+    <a href="#scroll-track" class="brand-lockup" id="brand-home-link" aria-label="Ruby Cycles — Return to Top">
+      <span class="brand-wordmark">RUBY CYCLES</span>
+      <span class="brand-estd">ESTD. 1973</span>
+    </a>
+
+    <!-- MENU TRIGGER (TOP-RIGHT) -->
+    <button class="menu-trigger-btn" id="menu-trigger-btn" aria-label="Open Navigation Menu" aria-expanded="false">
+      <span class="menu-trigger-label">MENU</span>
+      <div class="menu-hamburger-icon">
+        <span class="bar bar-top"></span>
+        <span class="bar bar-bottom"></span>
+      </div>
+    </button>
+
+  </header>
+
+  <!-- FULL-SCREEN LUXURY NAVIGATION OVERLAY -->
+  <div class="luxury-menu-overlay" id="luxury-menu-overlay" aria-hidden="true">
+    <div class="menu-overlay-backdrop"></div>
+    
+    <!-- OVERLAY HEADER -->
+    <div class="menu-overlay-header">
+      <div class="brand-lockup">
+        <span class="brand-wordmark">RUBY CYCLES</span>
+        <span class="brand-estd">ESTD. 1973</span>
+      </div>
+
+      <button class="menu-close-btn" id="menu-close-btn" aria-label="Close Navigation Menu">
+        <span class="close-label">CLOSE</span>
+        <span class="close-icon">✕</span>
+      </button>
+    </div>
+
+    <!-- OVERLAY NAVIGATION BODY -->
+    <nav class="menu-nav-container" aria-label="Main Navigation">
+      <ul class="menu-nav-list">
+        
+        <li class="menu-nav-item" style="--nav-i: 1;">
+          <a href="#scroll-track" class="menu-nav-link active" data-target="scroll-track">
+            <span class="nav-num">01</span>
+            <span class="nav-text">HOME</span>
+          </a>
+        </li>
+
+        <li class="menu-nav-item" style="--nav-i: 2;">
+          <a href="#brands-showroom" class="menu-nav-link" data-target="brands-showroom">
+            <span class="nav-num">02</span>
+            <span class="nav-text">BRANDS WE DEAL WITH</span>
+          </a>
+        </li>
+
+        <li class="menu-nav-item" style="--nav-i: 3;">
+          <a href="#outlets-section" class="menu-nav-link" data-target="outlets-section">
+            <span class="nav-num">03</span>
+            <span class="nav-text">OUR OUTLETS</span>
+          </a>
+        </li>
+
+        <li class="menu-nav-item" style="--nav-i: 4;">
+          <a href="#founder-section" class="menu-nav-link" data-target="founder-section">
+            <span class="nav-num">04</span>
+            <span class="nav-text">MEET OUR FOUNDER</span>
+          </a>
+        </li>
+
+        <li class="menu-nav-item" style="--nav-i: 5;">
+          <a href="#contact-section" class="menu-nav-link" data-target="contact-section">
+            <span class="nav-num">05</span>
+            <span class="nav-text">CONTACT</span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- OVERLAY FOOTER -->
+    <div class="menu-overlay-footer">
+      <div class="footer-hairline"></div>
+      <div class="overlay-footer-row">
+        <span class="overlay-tagline">OFFICIAL LUXURY CYCLING DESTINATION • NELLORE</span>
+        <span class="overlay-year">ESTD. 1973</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FIXED CANVAS (DRAWS WATERMARK BEHIND AND CYCLE IN FRONT) -->
+  <canvas id="cycle-canvas"></canvas>
+
+  <!-- MINIMAL SCROLL HINT (AT START) -->
+  <div id="scroll-hint" class="scroll-hint">
+    <span>SCROLL DOWN</span>
+    <div class="arrow-down">↓</div>
+  </div>
+
+  <!-- SCROLL TRACK (450vh HEIGHT FOR FLUID SCRUBBING) -->
+  <div class="scroll-track" id="scroll-track"></div>
+
+  <!-- SECTION 1: BRANDS WE DEAL WITH (APPEARS IMMEDIATELY AFTER SCROLL ANIMATION) -->
+  <section class="showroom-section" id="brands-showroom">
+    <div class="showroom-container">
+      
+      <!-- LUXURY EDITORIAL HEADER -->
+      <div class="showroom-header">
+        <span class="showroom-overline">OFFICIAL AUTHORIZED SHOWROOM</span>
+        <h2 class="showroom-title">BRANDS WE DEAL WITH</h2>
+        <div class="showroom-rule"></div>
+        <p class="showroom-descriptor">CURATED PARTNERSHIPS WITH ICONIC CYCLE MANUFACTURERS</p>
+      </div>
+
+      <!-- SHOWROOM GALLERY EXHIBIT (3 UP 3 DOWN) -->
+      <div class="showroom-gallery">
+        
+        <!-- 1. HERO CYCLES -->
+        <div class="showroom-item" data-index="1">
+          <div class="plaque-mount">
+            <div class="plaque-surface">
+              <img src="assets/brands/hero.png" alt="Hero Cycles" class="plaque-logo">
+            </div>
+          </div>
+          <div class="plaque-details">
+            <h3 class="brand-heading">HERO CYCLES</h3>
+            <span class="brand-meta">EST. 1956 • GLOBAL CYCLE TITAN</span>
+          </div>
+        </div>
+
+        <!-- 2. BSA CYCLES -->
+        <div class="showroom-item" data-index="2">
+          <div class="plaque-mount">
+            <div class="plaque-surface">
+              <img src="assets/brands/bsa.png" alt="BSA Cycles" class="plaque-logo">
+            </div>
+          </div>
+          <div class="plaque-details">
+            <h3 class="brand-heading">BSA</h3>
+            <span class="brand-meta">BIRMINGHAM SMALL ARMS • BRITISH HERITAGE</span>
+          </div>
+        </div>
+
+        <!-- 3. HERCULES -->
+        <div class="showroom-item" data-index="3">
+          <div class="plaque-mount">
+            <div class="plaque-surface">
+              <img src="assets/brands/hercules.png" alt="Hercules" class="plaque-logo">
+            </div>
+          </div>
+          <div class="plaque-details">
+            <h3 class="brand-heading">HERCULES</h3>
+            <span class="brand-meta">BUILT FOR UNCOMPROMISED STRENGTH</span>
+          </div>
+        </div>
+
+        <!-- 4. STRYDER -->
+        <div class="showroom-item" data-index="4">
+          <div class="plaque-mount">
+            <div class="plaque-surface">
+              <img src="assets/brands/stryder.png" alt="Stryder A Tata Product" class="plaque-logo">
+            </div>
+          </div>
+          <div class="plaque-details">
+            <h3 class="brand-heading">STRYDER</h3>
+            <span class="brand-meta">A TATA PRODUCT • PRECISION MOBILITY</span>
+          </div>
+        </div>
+
+        <!-- 5. POPSTAR -->
+        <div class="showroom-item" data-index="5">
+          <div class="plaque-mount">
+            <div class="plaque-surface">
+              <img src="assets/brands/popstar.jpg" alt="Popstar" class="plaque-logo">
+            </div>
+          </div>
+          <div class="plaque-details">
+            <h3 class="brand-heading">POPSTAR</h3>
+            <span class="brand-meta">URBAN & FREESTYLE DYNAMICS</span>
+          </div>
+        </div>
+
+        <!-- 6. AVON CYCLES -->
+        <div class="showroom-item" data-index="6">
+          <div class="plaque-mount">
+            <div class="plaque-surface">
+              <img src="assets/brands/avon.png" alt="Avon Cycles" class="plaque-logo">
+            </div>
+          </div>
+          <div class="plaque-details">
+            <h3 class="brand-heading">AVON CYCLES</h3>
+            <span class="brand-meta">LEGACY PIONEER • ROBUST ENGINEERING</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- REFINED SHOWROOM GUARANTEE -->
+      <div class="showroom-footer">
+        <div class="footer-hairline"></div>
+        <p class="showroom-guarantee">AUTHORIZED DEALERSHIP • FACTORY WARRANTY • BESPOKE WORKSHOP SERVICE</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 2: OUR OUTLETS (APPEARS IMMEDIATELY AFTER BRANDS WE DEAL WITH) -->
+  <section class="outlets-section" id="outlets-section">
+    <div class="outlets-container">
+      
+      <!-- LUXURY EDITORIAL SECTION HEADER -->
+      <div class="outlets-header">
+        <span class="outlets-overline">RETAIL PRESENCE & SHOWROOM DESTINATIONS</span>
+        <h2 class="outlets-title">OUR OUTLETS</h2>
+        <div class="outlets-rule"></div>
+        <p class="outlets-descriptor">VISIT OUR OFFICIAL RUBY CYCLES SHOWROOMS & EXPERIENCE WORLD-CLASS BICYCLES</p>
+      </div>
+
+      <!-- OUTLET 01 SHOWROOM PRESENTATION -->
+      <div class="outlet-card" id="outlet-01">
+        
+        <!-- CINEMATIC AUTOMATIC SLIDESHOW VIEWPORT -->
+        <div class="slideshow-viewport" aria-label="Outlet 1 Photography Showcase">
+          
+          <!-- SLIDES CONTAINER -->
+          <div class="slides-wrapper">
+            
+            <!-- Slide 1: Showroom Facade Exterior -->
+            <div class="slide-item active" data-slide="0">
+              <img src="assets/outlets/outlet_1_exterior.png" alt="Ruby Cycles Showroom Exterior Facade" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">STOREFRONT & FACADE</div>
+            </div>
+
+            <!-- Slide 2: Main Showroom Interior Aisle -->
+            <div class="slide-item" data-slide="1">
+              <img src="assets/outlets/outlet_1_interior_aisle.png" alt="Ruby Cycles Showroom Interior Gallery" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">SHOWROOM INTERIOR & FLEET</div>
+            </div>
+
+            <!-- Slide 3: Wall Mounted Display Section -->
+            <div class="slide-item" data-slide="2">
+              <img src="assets/outlets/outlet_1_wall_display.png" alt="Ruby Cycles Architectural Wall Display" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">PERFORMANCE FRAME EXHIBIT</div>
+            </div>
+
+            <!-- Slide 4: Mountain & Performance Bike Lineup -->
+            <div class="slide-item" data-slide="3">
+              <img src="assets/outlets/outlet_1_bike_lineup.jpg" alt="Ruby Cycles Premium Mountain Bike Collection" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">FLAGSHIP LINEUP & MTB FLEET</div>
+            </div>
+
+            <!-- Slide 5: Feature Bike Display Frame -->
+            <div class="slide-item" data-slide="4">
+              <img src="assets/outlets/outlet_1_brick_frame.png" alt="Ruby Cycles Brick Wall Feature Display" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">FEATURED EXHIBITION RIG</div>
+            </div>
+
+          </div>
+
+          <!-- SLIDESHOW CONTROLS (UNOBTRUSIVE LUXURY ARROWS) -->
+          <button class="slide-nav-btn prev-btn" aria-label="Previous Photograph">
+            <span class="nav-chevron">‹</span>
+          </button>
+          <button class="slide-nav-btn next-btn" aria-label="Next Photograph">
+            <span class="nav-chevron">›</span>
+          </button>
+
+          <!-- PROGRESS INDICATOR PILLS -->
+          <div class="slideshow-pagination">
+            <button class="page-dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="page-dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="page-dot" data-index="2" aria-label="Slide 3"></button>
+            <button class="page-dot" data-index="4" aria-label="Slide 4"></button>
+            <button class="page-dot" data-index="4" aria-label="Slide 5"></button>
+          </div>
+
+          <!-- SLIDE COUNTER -->
+          <div class="slide-counter-badge">01 / 05</div>
+
+        </div>
+
+        <!-- OUTLET EDITORIAL DETAILS PANEL -->
+        <div class="outlet-info-panel">
+          
+          <!-- EXACT ADDRESS AS REQUIRED -->
+          <div class="outlet-address-block">
+            <span class="address-label">SHOWROOM LOCATION</span>
+            <p class="address-text">Opp. VRC Ground, Nellore</p>
+          </div>
+
+          <!-- LOCATION ACTION -->
+          <div class="outlet-action-row">
+            <a href="https://maps.google.com/?q=Ruby+Cycles+Opp+VRC+Ground+Nellore" target="_blank" rel="noopener noreferrer" class="outlet-map-link">
+              <span>GET DIRECTIONS</span>
+              <span class="link-arrow">↗</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- OUTLET 02 SHOWROOM PRESENTATION -->
+      <div class="outlet-card" id="outlet-02">
+        
+        <!-- CINEMATIC AUTOMATIC SLIDESHOW VIEWPORT -->
+        <div class="slideshow-viewport" aria-label="Outlet 2 Photography Showcase">
+          
+          <!-- SLIDES CONTAINER -->
+          <div class="slides-wrapper">
+            
+            <!-- Slide 1: Showroom Facade Exterior -->
+            <div class="slide-item active" data-slide="0">
+              <img src="assets/outlets/outlet_2_facade.png" alt="Ruby Cycle Company Storefront Exterior" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">STOREFRONT & FACADE</div>
+            </div>
+
+            <!-- Slide 2: Main Showroom Interior Gallery -->
+            <div class="slide-item" data-slide="1">
+              <img src="assets/outlets/outlet_2_showroom_aisle.jpg" alt="Ruby Cycle Company Main Showroom Gallery" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">SHOWROOM GALLERY & FLEET</div>
+            </div>
+
+            <!-- Slide 3: Junior & Freestyle Lineup -->
+            <div class="slide-item" data-slide="2">
+              <img src="assets/outlets/outlet_2_kids_fleet.jpg" alt="Ruby Cycle Company Junior & Freestyle Lineup" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">JUNIOR & FREESTYLE LINEUP</div>
+            </div>
+
+            <!-- Slide 4: Wall-Mounted Collection -->
+            <div class="slide-item" data-slide="3">
+              <img src="assets/outlets/outlet_2_wall_array.png" alt="Ruby Cycle Company Wall-Mounted Collection" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">WALL-MOUNT EXHIBITION</div>
+            </div>
+
+            <!-- Slide 5: Performance MTB Collection -->
+            <div class="slide-item" data-slide="4">
+              <img src="assets/outlets/outlet_2_mtb_lineup.png" alt="Ruby Cycle Company Performance MTB Collection" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">PERFORMANCE MTB COLLECTION</div>
+            </div>
+
+          </div>
+
+          <!-- SLIDESHOW CONTROLS (UNOBTRUSIVE LUXURY ARROWS) -->
+          <button class="slide-nav-btn prev-btn" aria-label="Previous Photograph">
+            <span class="nav-chevron">‹</span>
+          </button>
+          <button class="slide-nav-btn next-btn" aria-label="Next Photograph">
+            <span class="nav-chevron">›</span>
+          </button>
+
+          <!-- PROGRESS INDICATOR PILLS -->
+          <div class="slideshow-pagination">
+            <button class="page-dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="page-dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="page-dot" data-index="2" aria-label="Slide 3"></button>
+            <button class="page-dot" data-index="3" aria-label="Slide 4"></button>
+            <button class="page-dot" data-index="4" aria-label="Slide 5"></button>
+          </div>
+
+          <!-- SLIDE COUNTER -->
+          <div class="slide-counter-badge">01 / 05</div>
+
+        </div>
+
+        <!-- OUTLET EDITORIAL DETAILS PANEL -->
+        <div class="outlet-info-panel">
+          
+          <!-- EXACT ADDRESS AS REQUIRED -->
+          <div class="outlet-address-block">
+            <span class="address-label">SHOWROOM LOCATION</span>
+            <p class="address-text">Opp. TVS Kalyan Sadan, Trunk Road, Beside Mandi King, Nellore</p>
+          </div>
+
+          <!-- LOCATION ACTION -->
+          <div class="outlet-action-row">
+            <a href="https://maps.google.com/?q=Ruby+Cycle+Company+Opp+TVS+Kalyan+Sadan+Trunk+Road+Nellore" target="_blank" rel="noopener noreferrer" class="outlet-map-link">
+              <span>GET DIRECTIONS</span>
+              <span class="link-arrow">↗</span>
+            </a>
+          </div>
+
+        </div>
+
+      <!-- OUTLET 03 SHOWROOM PRESENTATION -->
+      <div class="outlet-card" id="outlet-03">
+        
+        <!-- CINEMATIC AUTOMATIC SLIDESHOW VIEWPORT -->
+        <div class="slideshow-viewport" aria-label="Outlet 3 Photography Showcase">
+          
+          <!-- SLIDES CONTAINER -->
+          <div class="slides-wrapper">
+            
+            <!-- Slide 1: Showroom Facade Exterior -->
+            <div class="slide-item active" data-slide="0">
+              <img src="assets/outlets/outlet_3_facade.jpg" alt="Ruby Cycle Company Subedarpet Road Facade" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">STOREFRONT & FACADE</div>
+            </div>
+
+            <!-- Slide 2: Main Showroom Gallery -->
+            <div class="slide-item" data-slide="1">
+              <img src="assets/outlets/outlet_3_interior.png" alt="Ruby Cycle Company Subedarpet Road Gallery" class="slide-image">
+              <div class="slide-vignette"></div>
+              <div class="slide-caption-tag">SHOWROOM GALLERY & FLEET</div>
+            </div>
+
+          </div>
+
+          <!-- SLIDESHOW CONTROLS (UNOBTRUSIVE LUXURY ARROWS) -->
+          <button class="slide-nav-btn prev-btn" aria-label="Previous Photograph">
+            <span class="nav-chevron">‹</span>
+          </button>
+          <button class="slide-nav-btn next-btn" aria-label="Next Photograph">
+            <span class="nav-chevron">›</span>
+          </button>
+
+          <!-- PROGRESS INDICATOR PILLS -->
+          <div class="slideshow-pagination">
+            <button class="page-dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="page-dot" data-index="1" aria-label="Slide 2"></button>
+          </div>
+
+          <!-- SLIDE COUNTER -->
+          <div class="slide-counter-badge">01 / 02</div>
+
+        </div>
+
+        <!-- OUTLET EDITORIAL DETAILS PANEL -->
+        <div class="outlet-info-panel">
+          
+          <!-- EXACT ADDRESS AS REQUIRED -->
+          <div class="outlet-address-block">
+            <span class="address-label">SHOWROOM LOCATION</span>
+            <p class="address-text">Beside Babu Ice Creams, Subedarpet Road, Near Lucky Shopping Mall, Nellore</p>
+          </div>
+
+          <!-- LOCATION ACTION -->
+          <div class="outlet-action-row">
+            <a href="https://maps.google.com/?q=Ruby+Cycle+Company+Subedarpet+Road+Beside+Babu+Ice+Creams+Nellore" target="_blank" rel="noopener noreferrer" class="outlet-map-link">
+              <span>GET DIRECTIONS</span>
+              <span class="link-arrow">↗</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 3: MEET OUR FOUNDER (IMMEDIATELY AFTER OUR OUTLETS) -->
+  <section class="founder-section" id="founder-section">
+    <div class="founder-container">
+      
+      <!-- EDITORIAL CONTENT COLUMN -->
+      <div class="founder-text-column">
+        <span class="founder-overline">MEET OUR FOUNDER</span>
+        <h2 class="founder-name">SYED ABDUL AZEEZ</h2>
+        <div class="founder-rule"></div>
+        <span class="founder-heritage">EST. 1973</span>
+      </div>
+
+      <!-- EDITORIAL PORTRAIT EXHIBIT -->
+      <div class="founder-portrait-column">
+        <div class="founder-portrait-frame">
+          <img src="assets/founder/founder_syed_abdul_azeez.png" alt="Syed Abdul Azeez — Founder, Ruby Cycles" class="founder-photo">
+          <div class="founder-vignette"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: CONTACT (IMMEDIATELY AFTER MEET OUR FOUNDER) -->
+  <section class="contact-section" id="contact-section">
+    <div class="contact-container">
+      
+      <!-- LEFT EDITORIAL COLUMN: HEADING & BRAND STATEMENT -->
+      <div class="contact-header-column">
+        <span class="contact-overline">DIRECT CONCIERGE & INQUIRIES</span>
+        <h2 class="contact-title">CONTACT</h2>
+        <div class="contact-rule"></div>
+        <p class="contact-descriptor">OFFICIAL SHOWROOM DIRECTORY • NELLORE</p>
+      </div>
+
+      <!-- RIGHT EDITORIAL COLUMN: CONTACT CHANNELS -->
+      <div class="contact-details-column">
+        
+        <!-- TELEPHONE CHANNEL -->
+        <div class="contact-channel-item">
+          <span class="channel-label">TELEPHONE / DIRECT INQUIRY</span>
+          <a href="tel:9866190255" class="channel-value-link tel-link" aria-label="Call Ruby Cycles at 9866190255">
+            <span class="link-text">9866190255</span>
+            <span class="channel-arrow">↗</span>
+          </a>
+        </div>
+
+        <div class="contact-divider"></div>
+
+        <!-- EMAIL CHANNELS -->
+        <div class="contact-channel-item">
+          <span class="channel-label">ELECTRONIC CORRESPONDENCE</span>
+          <div class="email-links-group">
+            <a href="mailto:ajaznewrubynlr@gmail.com" class="channel-value-link email-link" aria-label="Email ajaznewrubynlr@gmail.com">
+              <span class="link-text">ajaznewrubynlr@gmail.com</span>
+              <span class="channel-arrow">↗</span>
+            </a>
+            <a href="mailto:ajazahmedsyed43@gmail.com" class="channel-value-link email-link" aria-label="Email ajazahmedsyed43@gmail.com">
+              <span class="link-text">ajazahmedsyed43@gmail.com</span>
+              <span class="channel-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MINIMAL LUXURY FOOTER -->
+    <div class="contact-footer">
+      <div class="footer-hairline"></div>
+      <div class="footer-bottom-row">
+        <span class="footer-brand">RUBY CYCLES</span>
+        <span class="footer-copy">© 2026 RUBY CYCLES. ALL RIGHTS RESERVED.</span>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

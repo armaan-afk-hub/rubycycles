@@ -1,0 +1,20 @@
+{
+  "name": "ruby-cycles",
+  "version": "1.0.0",
+  "description": "Ruby Cycles — Luxury Bicycle Showroom & 3D Interactive Web Experience",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "luxury",
+    "bicycle",
+    "showroom",
+    "animation",
+    "canvas",
+    "ruby-cycles"
+  ],
+  "author": "Ruby Cycles",
+  "license": "ISC"
+}
